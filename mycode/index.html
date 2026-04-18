@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B2 Essay Vocabulary Guide | EN + VI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="light">
+
+  <!-- STICKY HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">📚</span>
+        <div class="logo-text">
+          <span class="logo-title">B2 Vocab</span>
+          <span class="logo-sub">Essay Guide · EN + VI</span>
+        </div>
+      </div>
+      <div class="header-controls">
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="globalSearch" class="search-input" placeholder="Search any word..." autocomplete="off" />
+          <button class="search-clear" id="searchClear" title="Clear">✕</button>
+        </div>
+        <button class="btn btn-outline" id="viToggle" title="Toggle Vietnamese">🇻🇳 VI</button>
+        <button class="btn btn-outline" id="darkToggle" title="Dark mode">🌙</button>
+        <button class="btn btn-primary" id="flashcardBtn">⚡ Flashcards</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+    </div>
+    <!-- Topic filter bar -->
+    <div class="topic-bar" id="topicBar">
+      <button class="topic-btn active" data-topic="all">All Topics</button>
+      <button class="topic-btn" data-topic="education">🎓 Education</button>
+      <button class="topic-btn" data-topic="technology">💻 Technology</button>
+      <button class="topic-btn" data-topic="environment">🌿 Environment</button>
+      <button class="topic-btn" data-topic="health">❤️ Health</button>
+      <button class="topic-btn" data-topic="society">🏙️ Society</button>
+      <button class="topic-btn" data-topic="economy">📈 Economy</button>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <!-- SIDEBAR NAV -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <p class="sidebar-label">Navigation</p>
+        <ul class="nav-list">
+          <li><a href="#overview" class="nav-link active"><span>01</span> Overview</a></li>
+          <li><a href="#vocabulary" class="nav-link"><span>02</span> Vocabulary by Topic</a></li>
+          <li><a href="#academic" class="nav-link"><span>03</span> Academic Words</a></li>
+          <li><a href="#linking" class="nav-link"><span>04</span> Linking Words</a></li>
+          <li><a href="#phrases" class="nav-link"><span>05</span> Useful Phrases</a></li>
+          <li><a href="#mistakes" class="nav-link"><span>06</span> Common Mistakes</a></li>
+          <li><a href="#practice" class="nav-link"><span>07</span> Practice</a></li>
+        </ul>
+        <div class="sidebar-progress">
+          <p class="sidebar-label">Your Progress</p>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <p class="progress-text" id="progressText">0 words mastered</p>
+          <button class="btn btn-sm btn-ghost" id="resetProgress">Reset</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="mainContent">
+
+      <!-- SEARCH RESULTS (hidden by default) -->
+      <section class="search-results hidden" id="searchResults">
+        <h2>Search Results <span id="searchCount" class="count-badge"></span></h2>
+        <div class="card-grid" id="searchGrid"></div>
+      </section>
+
+      <!-- 1. OVERVIEW -->
+      <section class="content-section" id="overview">
+        <div class="section-header">
+          <span class="section-num">01</span>
+          <h2 class="section-title">Overview <span class="vi-label">/ Tổng quan</span></h2>
+          <button class="collapse-btn" data-target="overviewBody">▼</button>
+        </div>
+        <div class="section-body" id="overviewBody">
+          <div class="overview-grid">
+            <div class="overview-card">
+              <div class="oc-icon">🎯</div>
+              <h3>What is B2 Vocabulary?</h3>
+              <p>B2 vocabulary refers to words and phrases at the <strong>Upper-Intermediate level</strong> of the Common European Framework of Reference (CEFR). At this level, learners can understand the main ideas of complex texts, express themselves clearly and spontaneously, and produce detailed writing on a wide range of subjects.</p>
+              <p class="vi-text">Từ vựng B2 là các từ và cụm từ ở trình độ Trung cấp cao của Khung tham chiếu Châu Âu chung (CEFR). Ở trình độ này, người học có thể hiểu các ý chính của các văn bản phức tạp, tự diễn đạt rõ ràng và tự nhiên.</p>
+            </div>
+            <div class="overview-card">
+              <div class="oc-icon">✍️</div>
+              <h3>Why Important for Essay Writing?</h3>
+              <ul class="overview-list">
+                <li>Express complex ideas clearly and accurately</li>
+                <li>Demonstrate sophisticated understanding of topics</li>
+                <li>Use academic language that examiners expect</li>
+                <li>Show a wide range of vocabulary for higher scores</li>
+              </ul>
+              <p class="vi-text">Sử dụng từ vựng B2 giúp bạn diễn đạt ý phức tạp, thể hiện sự hiểu biết sâu sắc, dùng ngôn ngữ học thuật mà giám khảo mong đợi, và thể hiện vốn từ phong phú.</p>
+            </div>
+            <div class="overview-card overview-stats">
+              <div class="oc-icon">📊</div>
+              <h3>Guide Contents</h3>
+              <div class="stat-row"><span class="stat-num">75</span><span>Topic Vocabulary Words</span></div>
+              <div class="stat-row"><span class="stat-num">27</span><span>Academic Words</span></div>
+              <div class="stat-row"><span class="stat-num">50</span><span>Linking Words</span></div>
+              <div class="stat-row"><span class="stat-num">20</span><span>Useful Phrases</span></div>
+              <div class="stat-row"><span class="stat-num">10</span><span>Common Mistakes</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. VOCABULARY BY TOPIC -->
+      <section class="content-section" id="vocabulary">
+        <div class="section-header">
+          <span class="section-num">02</span>
+          <h2 class="section-title">Vocabulary by Topic <span class="vi-label">/ Từ vựng theo chủ đề</span></h2>
+          <button class="collapse-btn" data-target="vocabularyBody">▼</button>
+        </div>
+        <div class="section-body" id="vocabularyBody">
+
+          <!-- Education -->
+          <div class="topic-group" data-topic="education">
+            <div class="topic-header">
+              <h3>🎓 Education <span class="vi-label">/ Giáo dục</span></h3>
+              <span class="word-count">15 words</span>
+            </div>
+            <div class="card-grid" id="edu-grid"></div>
+          </div>
+
+          <!-- Technology -->
+          <div class="topic-group" data-topic="technology">
+            <div class="topic-header">
+              <h3>💻 Technology <span class="vi-label">/ Công nghệ</span></h3>
+              <span class="word-count">15 words</span>
+            </div>
+            <div class="card-grid" id="tech-grid"></div>
+          </div>
+
+          <!-- Environment -->
+          <div class="topic-group" data-topic="environment">
+            <div class="topic-header">
+              <h3>🌿 Environment <span class="vi-label">/ Môi trường</span></h3>
+              <span class="word-count">15 words</span>
+            </div>
+            <div class="card-grid" id="env-grid"></div>
+          </div>
+
+          <!-- Health -->
+          <div class="topic-group" data-topic="health">
+            <div class="topic-header">
+              <h3>❤️ Health <span class="vi-label">/ Sức khỏe</span></h3>
+              <span class="word-count">15 words</span>
+            </div>
+            <div class="card-grid" id="health-grid"></div>
+          </div>
+
+          <!-- Society -->
+          <div class="topic-group" data-topic="society">
+            <div class="topic-header">
+              <h3>🏙️ Society <span class="vi-label">/ Xã hội</span></h3>
+              <span class="word-count">15 words</span>
+            </div>
+            <div class="card-grid" id="society-grid"></div>
+          </div>
+
+          <!-- Economy -->
+          <div class="topic-group" data-topic="economy">
+            <div class="topic-header">
+              <h3>📈 Economy <span class="vi-label">/ Kinh tế</span></h3>
+              <span class="word-count">15 words</span>
+            </div>
+            <div class="card-grid" id="economy-grid"></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 3. ACADEMIC WORDS -->
+      <section class="content-section" id="academic">
+        <div class="section-header">
+          <span class="section-num">03</span>
+          <h2 class="section-title">Academic Words <span class="vi-label">/ Từ học thuật</span></h2>
+          <button class="collapse-btn" data-target="academicBody">▼</button>
+        </div>
+        <div class="section-body" id="academicBody">
+          <p class="section-intro">These words are frequently used across all essay topics at B2 level. Master them to improve your academic writing style. <span class="vi-text">Những từ này được sử dụng thường xuyên trong tất cả các chủ đề bài luận ở trình độ B2.</span></p>
+          <div class="table-wrap">
+            <table class="vocab-table" id="academicTable">
+              <thead>
+                <tr>
+                  <th>Word / Form</th>
+                  <th>Meaning <span class="vi-label">(EN + VI)</span></th>
+                  <th>Example</th>
+                  <th>⭐</th>
+                </tr>
+              </thead>
+              <tbody id="academicBody_table"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. LINKING WORDS -->
+      <section class="content-section" id="linking">
+        <div class="section-header">
+          <span class="section-num">04</span>
+          <h2 class="section-title">Linking Words <span class="vi-label">/ Từ nối</span></h2>
+          <button class="collapse-btn" data-target="linkingBody">▼</button>
+        </div>
+        <div class="section-body" id="linkingBody">
+          <p class="section-intro">Linking words help you connect ideas logically and make your essays more coherent. <span class="vi-text">Từ nối giúp bạn kết nối các ý tưởng một cách logic và làm cho bài luận mạch lạc hơn.</span></p>
+          <div id="linkingContent"></div>
+        </div>
+      </section>
+
+      <!-- 5. USEFUL PHRASES -->
+      <section class="content-section" id="phrases">
+        <div class="section-header">
+          <span class="section-num">05</span>
+          <h2 class="section-title">Useful Phrases <span class="vi-label">/ Cụm từ hữu ích</span></h2>
+          <button class="collapse-btn" data-target="phrasesBody">▼</button>
+        </div>
+        <div class="section-body" id="phrasesBody">
+          <div id="phrasesContent"></div>
+        </div>
+      </section>
+
+      <!-- 6. COMMON MISTAKES -->
+      <section class="content-section" id="mistakes">
+        <div class="section-header">
+          <span class="section-num">06</span>
+          <h2 class="section-title">Common Mistakes <span class="vi-label">/ Lỗi thường gặp</span></h2>
+          <button class="collapse-btn" data-target="mistakesBody">▼</button>
+        </div>
+        <div class="section-body" id="mistakesBody">
+          <p class="section-intro">Avoid these frequent errors in B2-level essay writing. <span class="vi-text">Tránh những lỗi thường gặp này trong bài viết luận ở trình độ B2.</span></p>
+          <div class="mistakes-list" id="mistakesList"></div>
+        </div>
+      </section>
+
+      <!-- 7. PRACTICE -->
+      <section class="content-section" id="practice">
+        <div class="section-header">
+          <span class="section-num">07</span>
+          <h2 class="section-title">Practice Exercises <span class="vi-label">/ Bài tập thực hành</span></h2>
+          <button class="collapse-btn" data-target="practiceBody">▼</button>
+        </div>
+        <div class="section-body" id="practiceBody">
+          <div class="practice-tabs">
+            <button class="ptab active" data-ptab="fillblank">Fill in Blanks</button>
+            <button class="ptab" data-ptab="rewrite">Rewrite Sentences</button>
+            <button class="ptab" data-ptab="quiz">Quiz Mode</button>
+          </div>
+
+          <!-- Fill in Blanks -->
+          <div class="ptab-content active" id="fillblank">
+            <p class="section-intro">Complete each sentence with the correct word or phrase. <span class="vi-text">Hoàn thành mỗi câu bằng từ hoặc cụm từ đúng.</span></p>
+            <div id="fillBlankExercises"></div>
+          </div>
+
+          <!-- Rewrite -->
+          <div class="ptab-content" id="rewrite">
+            <p class="section-intro">Rewrite each sentence using more formal, B2-level language. <span class="vi-text">Viết lại mỗi câu sử dụng ngôn ngữ trang trọng hơn, ở trình độ B2.</span></p>
+            <div id="rewriteExercises"></div>
+          </div>
+
+          <!-- Quiz -->
+          <div class="ptab-content" id="quiz">
+            <div class="quiz-wrap" id="quizWrap">
+              <div class="quiz-header">
+                <div class="quiz-meta">
+                  <span id="quizProgress">Question 1 / 10</span>
+                  <span id="quizScore">Score: 0</span>
+                </div>
+                <div class="quiz-prog-bar"><div class="quiz-prog-fill" id="quizProgFill"></div></div>
+              </div>
+              <div class="quiz-card" id="quizCard">
+                <p class="quiz-instruction" id="quizInstruction">What is the meaning of:</p>
+                <h3 class="quiz-word" id="quizWord"></h3>
+                <div class="quiz-options" id="quizOptions"></div>
+              </div>
+              <div class="quiz-result hidden" id="quizResult">
+                <div class="result-icon" id="resultIcon"></div>
+                <h3 id="resultMsg"></h3>
+                <p id="resultExplain"></p>
+                <button class="btn btn-primary" id="nextQuizBtn">Next Question →</button>
+              </div>
+              <div class="quiz-final hidden" id="quizFinal">
+                <div class="final-score">
+                  <span id="finalScore"></span>
+                  <p>Quiz Complete! <span class="vi-text">Hoàn thành bài kiểm tra!</span></p>
+                </div>
+                <button class="btn btn-primary" id="restartQuiz">Restart Quiz</button>
+              </div>
+            </div>
+            <button class="btn btn-outline" id="startQuiz" style="margin:1.5rem auto;display:block;">🎮 Start Quiz</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FLASHCARD MODAL -->
+  <div class="modal-overlay hidden" id="flashcardModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>⚡ Flashcard Mode</h2>
+        <button class="modal-close" id="closeFlashcard">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="fc-controls">
+          <select id="fcTopicFilter" class="fc-select">
+            <option value="all">All Topics</option>
+            <option value="education">Education</option>
+            <option value="technology">Technology</option>
+            <option value="environment">Environment</option>
+            <option value="health">Health</option>
+            <option value="society">Society</option>
+            <option value="economy">Economy</option>
+            <option value="academic">Academic Words</option>
+          </select>
+          <span class="fc-counter" id="fcCounter">1 / 75</span>
+        </div>
+        <div class="flashcard" id="flashcard">
+          <div class="fc-inner" id="fcInner">
+            <div class="fc-front">
+              <p class="fc-hint">Click to reveal meaning</p>
+              <h2 class="fc-word" id="fcWord"></h2>
+              <p class="fc-topic-tag" id="fcTopicTag"></p>
+            </div>
+            <div class="fc-back">
+              <p class="fc-en-meaning" id="fcEnMeaning"></p>
+              <p class="fc-vi-meaning" id="fcViMeaning"></p>
+              <p class="fc-example" id="fcExample"></p>
+            </div>
+          </div>
+        </div>
+        <div class="fc-nav">
+          <button class="btn btn-outline" id="fcPrev">← Prev</button>
+          <div class="fc-actions">
+            <button class="btn btn-danger" id="fcHard" title="Mark hard">😓 Hard</button>
+            <button class="btn btn-success" id="fcEasy" title="Mark easy">✅ Got it</button>
+          </div>
+          <button class="btn btn-outline" id="fcNext">Next →</button>
+        </div>
+        <div class="fc-progress-wrap">
+          <span class="fc-stat">✅ Known: <strong id="fcKnown">0</strong></span>
+          <span class="fc-stat">😓 Hard: <strong id="fcHard2">0</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE SIDEBAR OVERLAY -->
+  <div class="sidebar-overlay hidden" id="sidebarOverlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
