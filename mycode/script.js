@@ -293,6 +293,7 @@ let starred = JSON.parse(localStorage.getItem('b2_starred') || '[]');
 let mastered = JSON.parse(localStorage.getItem('b2_mastered') || '[]');
 let fcKnownCount = 0;
 let fcHardCount = 0;
+let fcTypedCount = 0;
 let currentFcDeck = [];
 let fcIndex = 0;
 let quizData = [];
@@ -704,6 +705,18 @@ function buildFcDeck(topic) {
   return deck;
 }
 
+function closeTypingPanel() {
+  const panel = document.getElementById('fcTypingPanel');
+  panel.classList.add('hidden');
+  document.getElementById('fcWord').classList.remove('fc-word-hidden');
+  const input = document.getElementById('fcTypingInput');
+  input.value = '';
+  input.classList.remove('fc-type-correct', 'fc-type-incorrect');
+  const result = document.getElementById('fcTypingResult');
+  result.classList.add('hidden');
+  result.className = 'fc-typing-result hidden';
+}
+
 function showFcCard() {
   const card = currentFcDeck[fcIndex];
   if (!card) return;
@@ -714,12 +727,14 @@ function showFcCard() {
   document.getElementById('fcExample').textContent = card.example || '';
   document.getElementById('fcCounter').textContent = `${fcIndex + 1} / ${currentFcDeck.length}`;
   document.getElementById('flashcard').classList.remove('flipped');
+  closeTypingPanel();
 }
 
 document.getElementById('flashcardBtn').addEventListener('click', () => {
-  fcKnownCount = 0; fcHardCount = 0;
+  fcKnownCount = 0; fcHardCount = 0; fcTypedCount = 0;
   document.getElementById('fcKnown').textContent = 0;
   document.getElementById('fcHard2').textContent = 0;
+  document.getElementById('fcTypedCount').textContent = 0;
   currentFcDeck = buildFcDeck('all');
   fcIndex = 0;
   showFcCard();
@@ -739,6 +754,90 @@ document.getElementById('fcNext').addEventListener('click', () => { if (fcIndex 
 document.getElementById('fcEasy').addEventListener('click', () => { fcKnownCount++; document.getElementById('fcKnown').textContent = fcKnownCount; if (fcIndex < currentFcDeck.length - 1) { fcIndex++; showFcCard(); } });
 document.getElementById('fcHard').addEventListener('click', () => { fcHardCount++; document.getElementById('fcHard2').textContent = fcHardCount; if (fcIndex < currentFcDeck.length - 1) { fcIndex++; showFcCard(); } });
 document.getElementById('fcTopicFilter').addEventListener('change', (e) => { currentFcDeck = buildFcDeck(e.target.value); fcIndex = 0; showFcCard(); });
+
+// ---- FLASHCARD TYPING MODE ----
+function makeHint(word) {
+  // Show first letter(s) and blanks for the rest, preserve spaces
+  return word.split('').map((ch, i) => {
+    if (ch === ' ') return ' ';
+    if (i === 0) return ch;
+    // For multi-word: reveal first letter of each word
+    if (i > 0 && word[i-1] === ' ') return ch;
+    return '_';
+  }).join('');
+}
+
+document.getElementById('fcTypeBtn').addEventListener('click', () => {
+  const card = currentFcDeck[fcIndex];
+  if (!card) return;
+  const panel = document.getElementById('fcTypingPanel');
+  // Toggle panel
+  if (!panel.classList.contains('hidden')) {
+    closeTypingPanel();
+    return;
+  }
+  // Hide the word on card
+  document.getElementById('fcWord').classList.add('fc-word-hidden');
+  // Make sure card flips back to front
+  document.getElementById('flashcard').classList.remove('flipped');
+  // Show hint (first letter of each word)
+  document.getElementById('fcTypingHint').textContent = makeHint(card.word);
+  // Show meaning as clue
+  let clue = card.meaning || '';
+  if (card.meaningVi) clue += ' / ' + card.meaningVi;
+  document.getElementById('fcTypingMeaning').textContent = clue;
+  // Reset input
+  const input = document.getElementById('fcTypingInput');
+  input.value = '';
+  input.classList.remove('fc-type-correct', 'fc-type-incorrect');
+  const result = document.getElementById('fcTypingResult');
+  result.classList.add('hidden');
+  result.className = 'fc-typing-result hidden';
+  // Show panel
+  panel.classList.remove('hidden');
+  // Focus input
+  setTimeout(() => input.focus(), 50);
+});
+
+document.getElementById('fcTypingClose').addEventListener('click', closeTypingPanel);
+
+function checkTypingAnswer() {
+  const card = currentFcDeck[fcIndex];
+  if (!card) return;
+  const input = document.getElementById('fcTypingInput');
+  const userAnswer = input.value.trim().toLowerCase();
+  const correctAnswer = card.word.trim().toLowerCase();
+  const result = document.getElementById('fcTypingResult');
+
+  if (!userAnswer) {
+    input.focus();
+    return;
+  }
+
+  const isCorrect = userAnswer === correctAnswer;
+  input.classList.remove('fc-type-correct', 'fc-type-incorrect');
+  result.classList.remove('hidden', 'result-correct', 'result-incorrect');
+
+  if (isCorrect) {
+    input.classList.add('fc-type-correct');
+    result.classList.add('result-correct');
+    result.innerHTML = `✅ Correct! <strong>${card.word}</strong> — well done!`;
+    fcTypedCount++;
+    document.getElementById('fcTypedCount').textContent = fcTypedCount;
+  } else {
+    input.classList.add('fc-type-incorrect');
+    result.classList.add('result-incorrect');
+    result.innerHTML = `❌ Not quite. The correct answer is: <strong>${card.word}</strong>`;
+  }
+
+  // Reveal the word on the card
+  document.getElementById('fcWord').classList.remove('fc-word-hidden');
+}
+
+document.getElementById('fcTypingCheck').addEventListener('click', checkTypingAnswer);
+document.getElementById('fcTypingInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') checkTypingAnswer();
+});
 
 // ---- SIDEBAR ACTIVE ----
 function setupScrollSpy() {

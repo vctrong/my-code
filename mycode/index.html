@@ -351,12 +351,27 @@
           <div class="fc-actions">
             <button class="btn btn-danger" id="fcHard" title="Mark hard">😓 Hard</button>
             <button class="btn btn-success" id="fcEasy" title="Mark easy">✅ Got it</button>
+            <button class="btn btn-outline" id="fcTypeBtn" title="Type the word">✍️ Type It</button>
           </div>
           <button class="btn btn-outline" id="fcNext">Next →</button>
+        </div>
+        <!-- Typing Mode Panel -->
+        <div class="fc-typing-panel hidden" id="fcTypingPanel">
+          <div class="fc-typing-header">
+            <span class="fc-typing-hint">💡 Hint: <span id="fcTypingHint"></span></span>
+            <button class="btn btn-ghost btn-sm" id="fcTypingClose">✕ Cancel</button>
+          </div>
+          <div class="fc-typing-meaning" id="fcTypingMeaning"></div>
+          <div class="fc-typing-input-wrap">
+            <input type="text" id="fcTypingInput" class="fc-typing-input" placeholder="Type the English word/phrase..." autocomplete="off" spellcheck="false" />
+            <button class="btn btn-primary" id="fcTypingCheck">Check ✓</button>
+          </div>
+          <div class="fc-typing-result hidden" id="fcTypingResult"></div>
         </div>
         <div class="fc-progress-wrap">
           <span class="fc-stat">✅ Known: <strong id="fcKnown">0</strong></span>
           <span class="fc-stat">😓 Hard: <strong id="fcHard2">0</strong></span>
+          <span class="fc-stat">✍️ Typed: <strong id="fcTypedCount">0</strong></span>
         </div>
       </div>
     </div>

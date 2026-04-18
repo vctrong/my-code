@@ -503,7 +503,77 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.25; }
 
 .fc-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
 .fc-actions { display: flex; gap: 8px; }
-.fc-progress-wrap { display: flex; gap: 20px; justify-content: center; padding-top: 12px; border-top: 1px solid var(--border); }
+.fc-progress-wrap { display: flex; gap: 20px; justify-content: center; padding-top: 12px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+
+/* ---- FLASHCARD TYPING MODE ---- */
+.fc-typing-panel {
+  background: var(--surface);
+  border: 2px solid var(--blue);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 16px;
+  animation: fadeInUp 0.25s ease both;
+}
+.fc-typing-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 12px;
+}
+.fc-typing-hint {
+  font-size: 0.82rem; color: var(--text-muted);
+}
+.fc-typing-hint span {
+  font-family: var(--font-mono); color: var(--blue);
+  font-weight: 500; letter-spacing: 0.08em;
+}
+.fc-typing-meaning {
+  background: var(--bg-alt); border-radius: 8px;
+  padding: 12px 14px; font-size: 0.9rem;
+  color: var(--text-secondary); margin-bottom: 14px;
+  border-left: 3px solid var(--blue);
+  font-style: italic;
+}
+.fc-typing-input-wrap {
+  display: flex; gap: 10px; align-items: center;
+}
+.fc-typing-input {
+  flex: 1; border: 2px solid var(--border);
+  border-radius: 8px; padding: 10px 14px;
+  font-family: var(--font-body); font-size: 1rem;
+  color: var(--text-primary); background: var(--bg-alt);
+  transition: border-color var(--transition), background var(--transition);
+}
+.fc-typing-input:focus {
+  outline: none; border-color: var(--blue);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px var(--blue-light);
+}
+.fc-typing-input.fc-type-correct {
+  border-color: var(--green); background: var(--green-light);
+}
+.fc-typing-input.fc-type-incorrect {
+  border-color: #dc2626; background: #fee2e2;
+}
+[data-theme="dark"] .fc-typing-input.fc-type-incorrect { background: #3b1212; }
+.fc-typing-result {
+  margin-top: 12px; border-radius: 8px; padding: 12px 14px;
+  font-size: 0.9rem; font-weight: 500;
+  animation: fadeInUp 0.2s ease both;
+}
+.fc-typing-result.result-correct {
+  background: var(--green-light); color: var(--green);
+  border: 1px solid var(--green);
+}
+.fc-typing-result.result-incorrect {
+  background: #fee2e2; color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+[data-theme="dark"] .fc-typing-result.result-incorrect { background: #3b1212; }
+.fc-word-hidden {
+  filter: blur(8px);
+  user-select: none;
+  pointer-events: none;
+  transition: filter 0.3s ease;
+}
 .fc-stat { font-size: 0.85rem; color: var(--text-muted); }
 
 /* ---- HIDDEN ---- */
